@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07110f">
+  <meta name="description" content="Hussein Mahmoud — Student, Programmer & Tech Enthusiast">
+  <title>Hussein Mahmoud | Digital ID</title>
+
+  <style>
+    :root{
+      --bg:#050908;
+      --card:rgba(12,20,18,.78);
+      --line:rgba(78,255,190,.16);
+      --text:#f4fff9;
+      --muted:#9fb3aa;
+      --green:#4dffb0;
+      --cyan:#55dfff;
+      --shadow:0 25px 80px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%,rgba(77,255,176,.13),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(85,223,255,.10),transparent 28%),
+        linear-gradient(145deg,#030605,#08110e 55%,#020504);
+      display:flex;
+      justify-content:center;
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,black,transparent 90%);
+    }
+
+    .wrap{width:min(100%,520px);padding:28px 18px 38px;position:relative}
+    .card{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(14,24,21,.86),rgba(7,13,11,.86));
+      border-radius:32px;
+      box-shadow:var(--shadow),0 0 70px rgba(77,255,176,.05);
+      backdrop-filter:blur(18px);
+    }
+
+    .glow{
+      position:absolute;
+      width:220px;height:220px;border-radius:50%;
+      background:var(--green);filter:blur(95px);opacity:.08;
+      top:-90px;left:-90px;pointer-events:none;
+    }
+
+    .hero{text-align:center;padding:34px 24px 22px}
+    .avatar{
+      width:118px;height:118px;object-fit:cover;border-radius:50%;
+      border:2px solid rgba(77,255,176,.65);
+      box-shadow:0 0 0 7px rgba(77,255,176,.055),0 0 45px rgba(77,255,176,.15);
+      display:block;margin:0 auto 18px;
+    }
+
+    .status{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 11px;border-radius:999px;
+      border:1px solid rgba(77,255,176,.18);
+      background:rgba(77,255,176,.055);
+      color:#b9ffe0;font-size:12px;font-weight:700;letter-spacing:.3px;
+    }
+    .dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}
+
+    h1{font-size:34px;line-height:1.05;margin:15px 0 8px;letter-spacing:-1.2px}
+    .handle{color:var(--muted);font-size:14px;margin:0}
+    .bio{color:#c5d2cc;line-height:1.65;font-size:14px;max-width:390px;margin:16px auto 0}
+
+    .links{padding:8px 20px 20px;display:grid;gap:11px}
+    .link{
+      text-decoration:none;color:var(--text);
+      display:flex;align-items:center;gap:13px;
+      padding:14px 15px;border-radius:17px;
+      border:1px solid rgba(255,255,255,.075);
+      background:rgba(255,255,255,.035);
+      transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
+    }
+    .link:hover{transform:translateY(-2px);border-color:rgba(77,255,176,.32);background:rgba(77,255,176,.055);box-shadow:0 10px 28px rgba(0,0,0,.2)}
+    .icon{
+      width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
+      background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.06);
+      flex:none;
+    }
+    .icon svg{width:21px;height:21px}
+    .linktext{flex:1}
+    .linktitle{font-size:14px;font-weight:800}
+    .linksub{font-size:11px;color:var(--muted);margin-top:3px}
+    .arrow{color:#71817a;font-size:18px}
+
+    .surprise{
+      margin:2px 20px 22px;width:calc(100% - 40px);
+      border:1px solid rgba(77,255,176,.25);
+      border-radius:17px;padding:15px 16px;
+      color:#07100c;font-weight:900;font-size:14px;
+      background:linear-gradient(135deg,var(--green),#8affd0);
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(77,255,176,.10);
+      transition:transform .2s ease,filter .2s ease;
+    }
+    .surprise:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .surprise:active{transform:scale(.98)}
+
+    .message{
+      margin:0 20px 22px;padding:14px 15px;border-radius:16px;
+      background:rgba(85,223,255,.045);
+      border:1px solid rgba(85,223,255,.13);
+      color:#cdeef3;text-align:center;font-size:13px;line-height:1.55;
+      min-height:48px;display:flex;align-items:center;justify-content:center;
+      transition:opacity .2s ease,transform .2s ease;
+    }
+
+    .footer{text-align:center;color:#66766f;font-size:11px;padding:0 20px 24px}
+    .footer span{color:#88a097}
+
+
+    .emoji-rain{
+      position:fixed;
+      top:-50px;
+      left:0;
+      z-index:40;
+      pointer-events:none;
+      font-size:var(--size);
+      animation:emojiFall var(--duration) linear forwards;
+      filter:drop-shadow(0 4px 10px rgba(0,0,0,.25));
+      will-change:transform,opacity;
+    }
+    @keyframes emojiFall{
+      0%{transform:translate3d(0,-60px,0) rotate(0deg);opacity:0}
+      10%{opacity:1}
+      85%{opacity:1}
+      100%{transform:translate3d(var(--drift),110vh,0) rotate(var(--rotate));opacity:0}
+    }
+
+    .toast{
+      position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);
+      opacity:0;pointer-events:none;
+      background:#eafff5;color:#06100c;
+      padding:11px 15px;border-radius:999px;font-size:12px;font-weight:800;
+      box-shadow:0 12px 40px rgba(0,0,0,.35);
+      transition:.25s ease;z-index:20;
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    .spark{
+      position:fixed;width:7px;height:7px;border-radius:50%;
+      pointer-events:none;z-index:30;animation:fly .9s ease-out forwards;
+    }
+    @keyframes fly{
+      from{transform:translate(0,0) scale(1);opacity:1}
+      to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}
+    }
+
+    @media(max-width:390px){
+      .wrap{padding:12px 10px 25px}
+      h1{font-size:30px}
+      .hero{padding-top:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="glow"></div>
+
+      <header class="hero">
+        <img class="avatar" src="profile.jpg" alt="Hussein Mahmoud">
+        <div class="status"><span class="dot"></span> Digital ID • Online</div>
+        <h1>Hussein Mahmoud</h1>
+        <p class="handle">@huha_2007</p>
+        <p class="bio">
+          Student • Programmer • Tech Enthusiast<br>
+          مهتم بالبرمجة والتقنية والأمن السيبراني وصناعة المشاريع.
+        </p>
+      </header>
+
+      <div class="links">
+        <a class="link" href="https://www.instagram.com/huha_2007" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.3" cy="6.8" r="1"/>
+            </svg>
+          </span>
+          <span class="linktext"><div class="linktitle">Instagram</div><div class="linksub">@huha_2007</div></span>
+          <span class="arrow">›</span>
+        </a>
+
+        <a class="link" href="https://t.me/huha_2007" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 4L3.8 10.7c-.9.35-.85 1.2.05 1.5l4.35 1.45 1.55 4.8c.2.65.3.9.95.9.5 0 .72-.23 1.05-.55l2.1-2.05 4.35 3.2c.8.45 1.37.15 1.58-.75L22 5.1C22.25 4.1 21.7 3.75 21 4Z"/>
+            </svg>
+          </span>
+          <span class="linktext"><div class="linktitle">Telegram</div><div class="linksub">@huha_2007</div></span>
+          <span class="arrow">›</span>
+        </a>
+
+        <a class="link" href="https://wa.me/9647880100807" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.3-4.1A8 8 0 1 1 20 11.7Z"/>
+              <path d="M8.4 8.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.5c.1.3.1.5-.1.7l-.5.6c.8 1.4 1.8 2.3 3.2 3l.6-.6c.2-.2.4-.2.7-.1l1.4.7c.3.1.4.3.4.5v.5c0 .3-.1.5-.4.7-.5.3-1.2.4-1.8.2-2.4-.7-4.7-2.7-6-5-.4-.8-.5-1.6-.2-2.2Z"/>
+            </svg>
+          </span>
+          <span class="linktext"><div class="linktitle">WhatsApp</div><div class="linksub">+964 788 010 0807</div></span>
+          <span class="arrow">›</span>
+        </a>
+      </div>
+
+      <button class="surprise" id="surpriseBtn">✦ اضغط هنا — خليها تمطر ✨</button>
+      <div class="message" id="message">اضغط الزر وخلي الصفحة تختار لك رسالة عشوائية ✨</div>
+
+      <footer class="footer">
+        Made with <span>code & curiosity</span> • Hussein Mahmoud
+      </footer>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">تم فتح الرابط ✦</div>
+
+  <script>
+    const messages = [
+      "كل مشروع كبير بدأ بفكرة صغيرة. لا توقف التجربة.",
+      "Code. Learn. Build. Repeat. ⚡",
+      "فضولك اليوم ممكن يصير مهارتك الأقوى باچر.",
+      "Keep learning — التقنية ما توقف، وإنت هم لا توقف.",
+      "مرحباً بك في المساحة الرقمية الخاصة بحسين ✦",
+      "A little curiosity can lead to something huge.",
+      "إذا وصلت لهنا… عندك عين للتفاصيل 😎"
+    ];
+
+    const btn = document.getElementById("surpriseBtn");
+    const box = document.getElementById("message");
+    const toast = document.getElementById("toast");
+
+    btn.addEventListener("click", () => {
+      const emojis = ["✨","💚","💫","⭐","🔥","💻","⚡","🫶","🚀","🎯","🧑‍💻","🌟","💎","🤍"];
+      const amount = 75;
+
+      // Make the rain start from random horizontal positions.
+      for(let i = 0; i < amount; i++){
+        const e = document.createElement("span");
+        e.className = "emoji-rain";
+        e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+        e.style.left = `${Math.random() * 100}vw`;
+        e.style.setProperty("--size", `${18 + Math.random() * 22}px`);
+        e.style.setProperty("--duration", `${2.2 + Math.random() * 2.8}s`);
+        e.style.setProperty("--drift", `${(Math.random() - .5) * 220}px`);
+        e.style.setProperty("--rotate", `${(Math.random() - .5) * 720}deg`);
+        e.style.animationDelay = `${Math.random() * .9}s`;
+
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 6500);
+      }
+
+      // Change the message each time.
+      box.style.opacity = "0";
+      setTimeout(() => {
+        box.textContent = "✨ نزلت الأمطار! شكراً لزيارتك ✨";
+        box.style.opacity = "1";
+      }, 120);
+    });
+
+    // Tiny welcome toast when the page opens.
+    setTimeout(() => {
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }, 650);
+  </script>
+</body>
+</html>
